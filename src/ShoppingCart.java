@@ -26,6 +26,7 @@ public class ShoppingCart {
     }
 
     public void addItem(ItemToPurchase item) {
+
         cartItems.add(item);
     }
 
@@ -38,11 +39,23 @@ public class ShoppingCart {
     }
 
     public int getNumItemsInCart() {
+        int count = 0;
 
+        for (int i = 0; i < cartItems.size(); ++i){
+            count += cartItems.get(i).getQuantity();
+        }
+
+        return count;
     }
 
     public int getCostOfCart() {
+        int total = 0;
 
+        for (int i = 0; i < cartItems.size(); ++i){
+            total += cartItems.get(i).getPrice() * cartItems.get(i).getQuantity();
+        }
+
+        return total;
     }
 
     public void printTotal() {
